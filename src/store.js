@@ -1,3 +1,5 @@
+import { createStore } from "redux";
+
 const initialState = {
   balance: 0,
   loan: 0,
@@ -22,7 +24,9 @@ function reducerFn(state = initialState, action) {
       if (state.loan > 0) return state;
       return {
         ...state,
-        loan: action.payload,
+        loan: action.payload.amount,
+        loanPurpose: action.payload.loanPurpose,
+        balance: state.balance + action.payload.amount,
       };
     }
     case "account/payLoan": {
@@ -38,3 +42,29 @@ function reducerFn(state = initialState, action) {
     }
   }
 }
+
+// import createStore from redux
+// pass the reducer fn to store
+// dispatch the reqd action with store
+// call getState method on store to log current state
+
+const store = createStore(reducerFn);
+
+store.dispatch({ type: "account/deposit", payload: 7000 });
+
+console.log(store.getState());
+
+store.dispatch({ type: "account/withdraw", payload: 2000 });
+console.log(store.getState());
+
+store.dispatch({
+  type: "account/requestLoan",
+  payload: { amount: 10000, loanPurpose: "buying house" },
+});
+console.log(store.getState());
+
+store.dispatch({
+  type: "account/payLoan",
+  payload: 10000,
+});
+console.log(store.getState());
