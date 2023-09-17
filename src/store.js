@@ -155,9 +155,9 @@ console.log(store.getState());
 store.dispatch(payLoan(10000));
 console.log(store.getState());
 
-store.dispatch(createCustomer("Bala", "123456789"));
+store.dispatch(createCustomer("Morton", "123456789"));
 console.log(store.getState());
 
-store.dispatch(updateCustomer("BalaSivs"));
+store.dispatch(updateCustomer("Claire"));
 store.dispatch(deposit(157000));
 console.log(store.getState());
