@@ -1,12 +1,7 @@
 import AccountOperations from "./features/accounts/AccountOperations";
 import BalanceDisplay from "./features/accounts/BalanceDisplay";
-import Customer from "./features/customers/CreateCustomer";
+import Customer from "./features/customers/Customer";
 import CreateCustomer from "./features/customers/CreateCustomer";
-import { store } from "./store";
-
-store.dispatch({ type: "account/deposit", payload: 7000 });
-
-console.log(store.getState());
 
 function App() {
   return (

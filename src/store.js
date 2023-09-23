@@ -8,5 +8,3 @@ const masterReducer = combineReducers({
 });
 
 export const store = createStore(masterReducer);
-
-console.log(store.getState());
